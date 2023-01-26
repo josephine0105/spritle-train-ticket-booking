@@ -6,56 +6,53 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container" *ngIf="seatCountSetting">
+    <div class="container" *ngIf="!seatCountSetting">
       <div class="row d-flex justify-content-center">
         <div class="col-md-4 mt-4">
-          <div class="card my-5">
-            <form
-              [formGroup]="bookingForm"
-              class="card-body p-lg-5"
-              (ngSubmit)="bookingSeat()"
-            >
-              <h4 class="card-title mb-3 text-center">Seat Configuartion</h4>
-
+          <div class="card my-5 ">
+            <form #ticketForm="ngForm" class="card-body p-lg-5 text-center">
+              <h4 class="card-title mb-3 text-center">Book Your Tickets Here</h4>
               <div class="form-group mb-4">
-                <label class="form-label">Enter number of seats to book</label>
-                <input
-                  type="number"
-                  name="seatCount"
-                  class="form-control"
-                  formControlName="seatCount"
-                  [ngClass]="{
-                    'is-invalid': submitted && f['seatCount'].errors
-                  }"
-                />
-                <div
-                  *ngIf="submitted && f['seatCount'].errors"
-                  class="invalid-feedback"
-                >
-                  <div *ngIf="f['seatCount'].errors['required']">
-                    Please enter how many seats to have to book
-                  </div>
-
-                  <div
-                    *ngIf="
-                      f['seatCount'].errors &&
-                      f['seatCount'].errors['maxLength']
-                    "
-                  >
-                    please enter max 7 seats to book
-                  </div>
+              <label class="form-label">Number of Tickets: <input type="number" [(ngModel)]="ticketCount" name="ticketCount"  required min="1"  class="form-control"></label>
+              <div class="text-danger" *ngIf="ticketForm.controls['ticketCount']?.invalid && (ticketForm.controls['ticketCount'].dirty || ticketForm.controls['ticketCount'].touched)">
+                <div *ngIf="ticketForm.controls['ticketCount'].errors?.['required']">
+                  Please enter ticket count
+                </div>
+                <div *ngIf="ticketForm.controls['ticketCount'].errors?.['min']">
+                  please enter ticket count must be at least 1
                 </div>
               </div>
-
-              <div class="text-center">
-                <button class="btn px-5 mb-5 w-100">Book Your Seats</button>
+            </div>
+              <div *ngFor="let passenger of passengers; let i = index">
+                <div class="form-group mb-4">
+                <label class="form-label">Detail of Passenger {{i + 1}}:</label>
+                </div>
+                <div class="form-group mb-4">
+                <label class="form-label">Name: <input type="text" [(ngModel)]="passenger.name" name="name{{i}}" class="form-control"></label>
+                </div>
+                <div class="form-group mb-4">
+                <label class="form-label">Age: <input type="number" [(ngModel)]="passenger.age" name="age{{i}}"class="form-control"></label>
+                </div>
+                <div class="form-group mb-4">
+                <label class="form-label">Gender: <input type="text" [(ngModel)]="passenger.gender" name="gender{{i}}" class="form-control"></label>
+                </div>
               </div>
+              <button class="btn px-5 mb-5 w-100"(click)="addPassenger()" *ngIf="ticketCount" >Add Passenger</button>
+              <br>
+              <button class="btn px-5 mb-5 w-100"(click)="ticketBooking()">Ticket Booking</button>
             </form>
+            
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf="!seatCountSetting">
+    <div *ngIf="seatCountSetting">
+      <div style="">
+      <li>Blue is window seat</li>
+      <li>Pink is middle seat</li>
+      <li>Grey is aisle seat</li>
+      <li >Green is booked seat</li>
+    </div>
       <div class="seats-container">
         <div
           *ngFor="let seat of seatsData"
