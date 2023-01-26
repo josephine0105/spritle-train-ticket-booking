@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
     console.log(this.roles)
 
   }
-  logout() {}
+  logout() {
+    localStorage.removeItem('is_logged')
+  }
   navbarOpen = false;
 
   toggleNavbar() {
