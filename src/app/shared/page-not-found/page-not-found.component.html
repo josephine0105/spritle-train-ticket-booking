@@ -1,1 +1,27 @@
-<p>page-not-found works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4 mt-4">
+          <div class="card my-5">
+              <h4 class="card-title my-5 text-center">Oops! Page Not Found</h4>
+              <p class="card-text text-center">We're sorry, but the page you requested could not be found.</p>
+              <div class="text-center">
+                <button class="btn px-5 mb-5 w-80" (click)="goback()">
+                  Go To HomePage
+                </button>
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

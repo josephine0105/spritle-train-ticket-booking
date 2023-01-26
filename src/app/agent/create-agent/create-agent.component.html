@@ -1,0 +1,248 @@
+<!-- <ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6 mt-4">
+          <div class="card my-5">
+            <form
+              [formGroup]="agentForm"
+              class="card-body p-lg-5"
+              (ngSubmit)="signup()"
+              id="agentForm"
+            >
+              <h4 class="card-title mb-3 text-center">Create a  agent here</h4>
+              <div class="form-group mb-4">
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  class="form-control"
+                  formControlName="username"
+                  [ngClass]="{
+                    'is-invalid': submitted && f['username'].errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && f['username'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['username'].errors['required']">
+                    Please enter username
+                  </div>
+
+                  <div *ngIf="f['username'].errors['minlength']">
+                    Please enter min 6 characters
+                  </div>
+                  <div *ngIf="f['username'].errors['maxlength']">
+                    Please enter max 20 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  formControlName="email"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                />
+                <div
+                  *ngIf="submitted && f['email'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['email'].errors['required']">
+                    Please enter email address
+                  </div>
+                  <div *ngIf="f['email'].errors['email']">
+                    Please enter valid email address
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-2">
+                <label class="form-label">Password</label>
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  name="password"
+                  class="form-control"
+                  formControlName="password"
+                  id="password"
+                  [ngClass]="{
+                    'is-invalid': submitted && f['password'].errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && f['password'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['password'].errors['required']">
+                    Please enter password
+                  </div>
+                  <div
+                    *ngIf="
+                      f['password'].errors && f['password'].errors['pattern']
+                    "
+                  >
+                    Use 8 or more characters with a mix of letters, numbers &
+                    symbols
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">Choose Option</label>
+                <select
+                  class="form-select"
+                  (change)="onChange($event)"
+                  formControlName="role"
+                >
+                  <option
+                    *ngFor="let data of roles"
+                    value="{{ data.name }}"
+                    [disabled]="data.id == 0"
+                  >
+                    {{ data.value }}
+                  </option>
+                </select>
+              </div>
+              <div
+                *ngIf="submitted && f['role'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['role'].errors['required']">
+                  Please select your role
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">Upload Picture:</label>
+                <input
+                  type="file"
+                  name="upload"
+                  class="form-control"
+                  formControlName="upload"
+                  (change)="onFileSelect($event)"
+                />
+                <div
+                  *ngIf="f['upload'].touched && f['upload'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="f['upload'].errors && f['upload'].errors['required']"
+                  >
+                    Please upload picture
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">DOB:</label>
+                <input
+                  type="date"
+                  name="email"
+                  class="form-control"
+                  formControlName="dob"
+                />
+                <div
+                  *ngIf="f['dob'].touched && f['dob'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="f['dob'].errors && f['dob'].errors['required']"
+                  >
+                    Please enter dob
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">Address:</label>
+                <input
+                  type="address"
+                  name="address"
+                  class="form-control"
+                  formControlName="address"
+                />
+                <div
+                  *ngIf="f['address'].touched && f['address'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="f['address'].errors && f['address'].errors['required']"
+                  >
+                    Please enter address
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label">Phone:</label>
+                <input
+                  type="phone"
+                  name="phone"
+                  class="form-control"
+                  formControlName="phone"
+                />
+                <div
+                  *ngIf="f['phone'].touched && f['phone'].invalid"
+                  class="alert alert-danger"
+                >
+                  <div
+                    *ngIf="f['phone'].errors && f['phone'].errors['required']"
+                  >
+                    Please enter Phone
+                  </div>
+                  <div
+                    *ngIf="f['phone'].errors && f['phone'].errors['pattern']"
+                  >
+                    Please enter number 
+                  </div>
+                  <div
+                  *ngIf="f['phone'].errors && f['phone'].errors['maxLength']"
+                >
+                  Please enter 10  number only
+                </div>
+                </div>
+              </div>
+              <div class="form-group mb-4" style="display: none;">
+                <label class="form-label">Username</label>
+                <input
+                  type="text"
+                  name="path"
+                  class="form-control"
+                  formControlName="path"
+                  value="http://localhost:4200/login"
+                />
+                
+              </div>
+              <div class="form-check my-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  (change)="hideShowPassword($event)"
+                />
+                <label class="form-check-label"> Show Password </label>
+              </div>
+
+              <div class="text-center">
+                <button class="btn px-5 mb-5 w-100">Create Agent</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

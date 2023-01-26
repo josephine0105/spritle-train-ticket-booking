@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

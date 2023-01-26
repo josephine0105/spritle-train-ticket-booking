@@ -1,1 +1,57 @@
-
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../assets/images/logo.png"
+        width="75"
+        height="55"
+        class="d-inline-block align-top my-2"
+        alt="Logo"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="toggleNavbar()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      [ngClass]="{ show: navbarOpen }"
+    >
+      <ul class="navbar-nav ml-auto align-right">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="this.login == true">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="this.login == true">
+          <a class="nav-link" routerLink="/signup">Signup</a>
+        </li>
+        <li class="nav-item" *ngIf="this.roles == 'Admin'">
+          <a class="nav-link" routerLink="/agent">Create Agent</a>
+        </li>
+        <li class="nav-item" *ngIf="this.roles == 'Agent'">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+        <li class="nav-item" *ngIf="this.roles == 'Agent'">
+          <a class="nav-link" routerLink="/ticket">Ticket Booking</a>
+        </li>
+        <li class="nav-item" *ngIf="this.roles == 'Admin'" >
+          <a class="nav-link" routerLink="/seat">Seat Arragemnent</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/agent">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

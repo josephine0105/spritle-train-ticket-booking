@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'AvenirLTStd';
+    src: url('./assets/fonts/FontsFreeNetAvenirLTStdBook.eot');
+    src: url('./assets/fonts/FontsFreeNetAvenirLTStdBook.eot') format('embedded-opentype'),
+      url('./assets/fonts/FontsFreeNetAvenirLTStdBook.woff2') format('woff2'),
+      url('./assets/fonts/FontsFreeNetAvenirLTStdBook.woff') format('woff'),
+      url('./assets/fonts/FontsFreeNetAvenirLTStdBook.ttf') format('truetype'),
+      url('./assets/fonts/FontsFreeNetAvenirLTStdBook.svg#FontsFreeNetAvenirLTStdBook') format('svg');
+  }
+  
+  @font-face {
+    font-family: 'AvenirLTBold';
+    src: url('./assets/fonts/bold/AvenirNextLTProBold.eot');
+    src: url('./assets/fonts/bold/AvenirNextLTProBold.eot') format('embedded-opentype'),
+      url('./assets/fonts/bold/AvenirNextLTProBold.woff2') format('woff2'),
+      url('./assets/fonts/bold/AvenirNextLTProBold.woff') format('woff'),
+      url('./assets/fonts/bold/AvenirNextLTProBold.ttf') format('truetype'),
+      url('./assets/fonts/bold/AvenirNextLTProBold.svg#AvenirNextLTProBold') format('svg');
+  }
+  
+  @font-face {
+    font-family: 'AvenirRegular';
+    src: url('./assets/fonts/regular/AvenirRegular.eot');
+    src: url('./assets/fonts/regular/AvenirRegular.eot') format('embedded-opentype'),
+      url('./assets/fonts/regular/AvenirRegular.woff2') format('woff2'),
+      url('./assets/fonts/regular/AvenirRegular.woff') format('woff'),
+      url('./assets/fonts/regular/AvenirRegular.ttf') format('truetype'),
+      url('./assets/fonts/regular/AvenirRegular.svg#AvenirRegular') format('svg');
+  }
+  :root {
+    --blue: #094f9a;
+    --lightblue:#3379C2;
+    --grey:rgba(0,0,0,.55);
+    --white:#fff;
+  }
+  body {
+  background: #eaf6f6;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1001%26quot%3b)' fill='none'%3e%3cpath d='M -408.2995251146603%2c482 C -312.3%2c439.8 -120.3%2c278.8 71.7004748853397%2c271 C 263.7%2c263.2 359.7%2c446.6 551.7004748853396%2c443 C 743.7%2c439.4 839.7%2c255 1031.7004748853396%2c253 C 1223.7%2c251 1430.04%2c465 1511.7004748853396%2c433 C 1593.36%2c401 1454.34%2c161 1440%2c93' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -900.7551319634257%2c501 C -804.76%2c438.6 -612.76%2c207.4 -420.7551319634257%2c189 C -228.76%2c170.6 -132.76%2c435.6 59.2448680365743%2c409 C 251.24%2c382.4 347.24%2c37.2 539.2448680365743%2c56 C 731.24%2c74.8 839.09%2c493.8 1019.2448680365743%2c503 C 1199.4%2c512.2 1355.85%2c182.2 1440%2c102' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -788.4898528792162%2c490 C -692.49%2c443.6 -500.49%2c256 -308.48985287921613%2c258 C -116.49%2c260 -20.49%2c522 171.51014712078387%2c500 C 363.51%2c478 459.51%2c183 651.5101471207838%2c148 C 843.51%2c113 973.81%2c311.8 1131.5101471207838%2c325 C 1289.21%2c338.2 1378.3%2c236.2 1440%2c214' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -123.78881847802785%2c471 C -27.79%2c405.2 164.21%2c158.6 356.21118152197215%2c142 C 548.21%2c125.4 644.21%2c371.6 836.2111815219721%2c388 C 1028.21%2c404.4 1124.21%2c201 1316.211181521972%2c224 C 1508.21%2c247 1771.45%2c512.4 1796.211181521972%2c503 C 1820.97%2c493.6 1511.24%2c242.2 1440%2c177' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1001'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  //   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1001%26quot%3b)' fill='none'%3e%3cpath d='M678.79 588.2C818.81 568.35 866.86 258.5 1124.39 239.75 1381.93 221 1450.48 69.18 1570 66.15' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M425.26 606.59C560.89 554.51 508.89 143.67 775.7 142.98 1042.51 142.29 1287.96 417.86 1476.58 422.98' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M697.08 633.67C821.62 592.33 775.74 229.66 1031.06 228.72 1286.37 227.78 1524.19 433.56 1699.01 435.92' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M520.35 618.65C640.61 582.3 593.99 241.91 850.27 239.58 1106.54 237.25 1342.78 351.18 1510.1 351.58' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M340.49 632.04C472.73 617.36 550.66 328.77 776.42 326.71 1002.17 324.65 994.38 396.71 1212.34 396.71 1430.31 396.71 1537.89 326.93 1648.27 326.71' stroke='rgba(51%2c121%2c194%2c0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1001'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+}
+.invalid-feedback{
+  text-transform: capitalize;
+}

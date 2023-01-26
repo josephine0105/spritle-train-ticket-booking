@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" *ngIf="seatCountSetting">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4 mt-4">
+          <div class="card my-5">
+            <form
+              [formGroup]="bookingForm"
+              class="card-body p-lg-5"
+              (ngSubmit)="bookingSeat()"
+            >
+              <h4 class="card-title mb-3 text-center">Seat Configuartion</h4>
+
+              <div class="form-group mb-4">
+                <label class="form-label">Enter number of seats to book</label>
+                <input
+                  type="number"
+                  name="seatCount"
+                  class="form-control"
+                  formControlName="seatCount"
+                  [ngClass]="{
+                    'is-invalid': submitted && f['seatCount'].errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && f['seatCount'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['seatCount'].errors['required']">
+                    Please enter how many seats to have to book
+                  </div>
+
+                  <div
+                    *ngIf="
+                      f['seatCount'].errors &&
+                      f['seatCount'].errors['maxLength']
+                    "
+                  >
+                    please enter max 7 seats to book
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button class="btn px-5 mb-5 w-100">Book Your Seats</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!seatCountSetting">
+      <div class="seats-container">
+        <div
+          *ngFor="let seat of seatsData"
+          class="seat"
+          [ngClass]="{
+            'seat-category-window': seat.category === 'window',
+            'seat-category-middle': seat.category === 'middle',
+            'seat-category-aisle': seat.category === 'aisle',
+            'seat-booked': seat.status === 'booked'
+          }"
+        >
+          <div class="seat-number">{{ seat.seatNo }}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
