@@ -30,6 +30,7 @@ export class SeatConfigComponent implements OnInit {
       this.submitted = false;
       localStorage.setItem('seats',JSON.stringify(this.seatForm.value))
     console.log( JSON.stringify(this.seatForm.value),'JSON.stringify(this.seatForm.value)')
+    this.router.navigate(['/agent'])
     }
       else
       {

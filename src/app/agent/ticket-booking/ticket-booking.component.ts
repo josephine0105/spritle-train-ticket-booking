@@ -8,7 +8,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-ticket-booking',
   templateUrl: './ticket-booking.component.html',
@@ -29,7 +29,7 @@ export class TicketBookingComponent implements OnInit {
   constructor(
     public _seatsService: SeatConfigService,
     private formBuilder: FormBuilder,
-    public toastr: ToastrService,
+    // public toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -223,9 +223,9 @@ export class TicketBookingComponent implements OnInit {
         );
         if (remainingSeats.length === 0) {
           
-          this.toastr.error('All the seats are booked!', '', {
-            timeOut: 2000,
-          });
+          // this.toastr.error('All the seats are booked!', '', {
+          //   timeOut: 2000,
+          // });
         }
       }
     }

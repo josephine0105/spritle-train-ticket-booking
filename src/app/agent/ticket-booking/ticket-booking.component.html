@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container" *ngIf="!seatCountSetting">
+    <div class="container" *ngIf="seatCountSetting">
       <div class="row d-flex justify-content-center">
         <div class="col-md-4 mt-4">
           <div class="card my-5 ">
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="seatCountSetting">
+    <div *ngIf="!seatCountSetting">
       <div style="">
       <li>Blue is window seat</li>
       <li>Pink is middle seat</li>

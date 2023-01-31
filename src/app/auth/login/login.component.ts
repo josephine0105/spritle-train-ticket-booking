@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm!: FormGroup;
   userDetails: any = [];
   submitted = false;
   showPassword: boolean = false;
-  role:any;
+  role: any;
   constructor(
     public router: Router,
     private formBuilder: FormBuilder,
@@ -38,14 +42,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.submitted = false;
       console.log(this.loginForm.value);
-      
-      this.router.navigate(['/']);
+
+      // this.router.navigate(['/']);
       this.loginForm.reset();
-      this.role=this._authService.sessionGetItem('is_role')
-      if(this.role=='Admin'){
-        this.router.navigate(['/']);
-      }
-      else{
+      this.role = localStorage.getItem('is_role');
+      console.log(this.role)
+      if (this.role == 'Admin') {
+        this.router.navigate(['/seat']);
+      } else {
         this.router.navigate(['/profile']);
       }
     } else {
@@ -61,5 +65,4 @@ export class LoginComponent implements OnInit {
   hideShowPassword(e: any) {
     this.showPassword = e.target.checked;
   }
-
 }
